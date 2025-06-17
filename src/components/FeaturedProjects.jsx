@@ -23,13 +23,6 @@ const projects = [
     location: 'Wuli East, Upper River Region',
     date: 'Completed: December 2023',
   },
-  {
-    title: 'Urban Filtration Upgrade',
-    image: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=400&q=80',
-    description: 'Upgraded an existing borehole with advanced filtration for a housing estate.',
-    location: 'Kanifing, Kanifing Region',
-    date: 'Completed: February 2024',
-  },
 ];
 
 const FeaturedProjects = () => (

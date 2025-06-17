@@ -28,54 +28,73 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+    <form onSubmit={handleSubmit} className="space-y-3 max-w-md mx-auto">
       <h2 className="text-xl font-bold">Contact Us</h2>
       {error && <div className="text-red-500">{error}</div>}
       {success && <div className="text-green-600">Thank you for contacting us!</div>}
-      <input
-        type="text"
-        name="name"
-        placeholder="Name"
-        value={form.name}
-        onChange={handleChange}
-        required
-        className="w-full border p-2 rounded"
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={handleChange}
-        required
-        className="w-full border p-2 rounded"
-      />
-      <input
-        type="tel"
-        name="phone"
-        placeholder="Phone (optional)"
-        value={form.phone}
-        onChange={handleChange}
-        className="w-full border p-2 rounded"
-      />
-      <textarea
-        name="message"
-        placeholder="Your message"
-        value={form.message}
-        onChange={handleChange}
-        required
-        className="w-full border p-2 rounded"
-      />
-      <label className="block">What is 3 + 4? (Human verification)</label>
-      <input
-        type="text"
-        name="human"
-        placeholder="Your answer"
-        value={form.human}
-        onChange={handleChange}
-        required
-        className="w-full border p-2 rounded"
-      />
+      <div>
+        <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+        <input
+          id="contact-name"
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={form.name}
+          onChange={handleChange}
+          required
+          className="w-full border p-2 rounded"
+        />
+      </div>
+      <div>
+        <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <input
+          id="contact-email"
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+          required
+          className="w-full border p-2 rounded"
+        />
+      </div>
+      <div>
+        <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 mb-1">Phone (optional)</label>
+        <input
+          id="contact-phone"
+          type="tel"
+          name="phone"
+          placeholder="Phone (optional)"
+          value={form.phone}
+          onChange={handleChange}
+          className="w-full border p-2 rounded"
+        />
+      </div>
+      <div>
+        <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+        <textarea
+          id="contact-message"
+          name="message"
+          placeholder="Your message"
+          value={form.message}
+          onChange={handleChange}
+          required
+          className="w-full border p-2 rounded"
+        />
+      </div>
+      <div>
+        <label htmlFor="contact-human" className="block text-sm font-medium text-gray-700 mb-1">What is 3 + 4? (Human verification)</label>
+        <input
+          id="contact-human"
+          type="text"
+          name="human"
+          placeholder="Your answer"
+          value={form.human}
+          onChange={handleChange}
+          required
+          className="w-full border p-2 rounded"
+        />
+      </div>
       <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Send</button>
     </form>
   );

@@ -228,80 +228,56 @@ function App() {
               <FeaturedProjects />
 
               {/* Contact Section */}
-              <section id="contact" className="py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                  <div className="text-center mb-16">
-                    <div className="inline-block bg-blue-500/20 px-4 py-2 rounded-full text-sm mb-6">
-                      💬 Get In Touch
+              <section id="contact" className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col lg:flex-row gap-12 items-center justify-between">
+                  {/* Contact Info */}
+                  <div className="flex-1 flex flex-col justify-center mb-10 lg:mb-0">
+                    <div className="inline-block bg-blue-500/20 px-4 py-2 rounded-full text-sm mb-6">Contact Us</div>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4">Let's Connect</h2>
+                    <p className="text-xl text-blue-100 mb-6 max-w-lg">Have a question, need a quote, or want to discuss your water project? Reach out and our team will get back to you within 24 hours.</p>
+                    <div className="mb-4">
+                      <div className="flex items-center mb-2">
+                        <Phone className="h-4 w-4 text-white mr-2" />
+                        <span className="ml-2">+220 3014290 / 3139076</span>
+                      </div>
+                      <div className="flex items-center mb-2">
+                        <Mail className="h-4 w-4 text-white mr-2" />
+                        <span className="ml-2">info@bedrockgambia.com</span>
+                      </div>
+                      <div className="flex items-center mb-2">
+                        <MapPin className="h-4 w-4 text-white mr-2" />
+                        <span className="ml-2">The Gambia</span>
+                      </div>
                     </div>
-                    <h2 className="text-4xl font-extrabold mb-4">
-                      Ready to Start Your Water Journey?
-                    </h2>
-                    <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-                      Whether you're starting fresh or need help maintaining your existing system, Bedrock is ready to support your journey — from the ground up.
-                    </p>
+                    <div className="text-sm text-blue-100 mb-2">We respect your privacy. Your information will never be shared.</div>
+                    <div className="text-sm text-blue-100">Our team is available Monday to Saturday, 8am – 6pm.</div>
                   </div>
-                  <div className="flex flex-col md:flex-row gap-12 items-stretch justify-center">
-                    {/* Left: Contact Form */}
-                    <div className="flex-1 flex flex-col justify-center">
-                      <div className="bg-white rounded-2xl shadow-2xl p-10 max-w-lg w-full mx-auto md:mx-0">
-                        <h3 className="text-2xl font-bold text-blue-700 mb-6 text-center">Send Us a Message</h3>
-                        <ContactForm />
+                  {/* Contact Form */}
+                  <div className="flex-1 flex flex-col justify-center w-full max-w-lg bg-white rounded-2xl shadow-2xl p-8">
+                    <h3 className="text-2xl font-bold text-blue-700 mb-6 text-center">Send Us a Message</h3>
+                    <form className="space-y-4">
+                      <div>
+                        <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input id="contact-name" type="text" name="name" required className="w-full border p-2 rounded text-black" placeholder="Your Name" />
                       </div>
-                    </div>
-                    {/* Right: Contact Info */}
-                    <div className="flex-1 flex flex-col justify-center">
-                      <div className="bg-blue-700/60 rounded-2xl shadow-xl p-10 h-full flex flex-col justify-center items-center text-white">
-                        <div className="mb-10 flex flex-col items-center">
-                          <div className="bg-blue-500/30 rounded-full p-4 mb-3">
-                            <Phone className="h-10 w-10 text-white" />
-                          </div>
-                          <div className="text-lg font-bold mb-1">Phone / WhatsApp</div>
-                          <div className="text-lg">+220 301-5490</div>
-                          <div className="text-lg">+220 313-0176</div>
-                        </div>
-                        <div className="mb-10 flex flex-col items-center">
-                          <div className="bg-blue-500/30 rounded-full p-4 mb-3">
-                            <Mail className="h-10 w-10 text-white" />
-                          </div>
-                          <div className="text-lg font-bold mb-1">Email</div>
-                          <div className="text-lg">info@bedrockgambia.com</div>
-                        </div>
-                        <div className="flex flex-col items-center">
-                          <div className="bg-blue-500/30 rounded-full p-4 mb-3">
-                            <MapPin className="h-10 w-10 text-white" />
-                          </div>
-                          <div className="text-lg font-bold mb-1">Location</div>
-                          <div className="text-lg">The Gambia</div>
-                        </div>
+                      <div>
+                        <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input id="contact-email" type="email" name="email" required className="w-full border p-2 rounded text-black" placeholder="you@email.com" />
                       </div>
-                    </div>
+                      <div>
+                        <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                        <input id="contact-phone" type="tel" name="phone" className="w-full border p-2 rounded text-black" placeholder="Phone (optional)" />
+                      </div>
+                      <div>
+                        <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                        <textarea id="contact-message" name="message" required className="w-full border p-2 rounded text-black" placeholder="How can we help you?" rows={4}></textarea>
+                      </div>
+                      <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-semibold w-full">Send Message</button>
+                      <div className="text-xs text-gray-500 text-center mt-2">We typically respond within 24 hours.</div>
+                    </form>
                   </div>
                 </div>
               </section>
-
-              {/* Floating Contact Us Button */}
-              <button
-                className="fixed bottom-8 right-8 bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-700 z-50"
-                onClick={() => setShowContact(true)}
-              >
-                Contact Us
-              </button>
-
-              {/* Contact Modal */}
-              {showContact && (
-                <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-                  <div className="bg-white rounded-lg p-8 max-w-md w-full relative">
-                    <button
-                      className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl"
-                      onClick={() => setShowContact(false)}
-                    >
-                      &times;
-                    </button>
-                    <ContactForm />
-                  </div>
-                </div>
-              )}
 
               {/* Footer */}
               <footer className="bg-gray-900 text-white py-12">
