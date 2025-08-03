@@ -70,28 +70,28 @@
   --card-foreground: oklch(0.24 0.09 50); /* Rich Brown */
   --popover: oklch(0.95 0.05 98); /* Sage Green */
   --popover-foreground: oklch(0.24 0.09 50); /* Rich Brown */
-  --primary: oklch(0.53 0.16 138); /* Forest Green */
+  --primary: #538E26; /* Forest Green */
   --primary-foreground: oklch(0.985 0 0); /* White for contrast */
   --secondary: oklch(0.74 0.16 67); /* Warm Orange */
   --secondary-foreground: oklch(0.24 0.09 50); /* Rich Brown */
   --muted: oklch(0.95 0.05 98); /* Sage Green */
   --muted-foreground: oklch(0.5 0.05 98); /* Darker Sage Green */
-  --accent: oklch(0.74 0.19 123); /* Vibrant Green */
+  --accent: #7BCC3E; /* Vibrant Green */
   --accent-foreground: oklch(0.24 0.09 50); /* Rich Brown */
   --destructive: oklch(0.577 0.245 27.325); /* Keeping original for now, no direct replacement in brand guide */
   --border: oklch(0.3 0.05 50); /* Desaturated Rich Brown */
   --input: oklch(0.3 0.05 50); /* Desaturated Rich Brown */
   --ring: oklch(0.4 0.05 50); /* Slightly darker Desaturated Rich Brown */
-  --chart-1: oklch(0.53 0.16 138); /* Forest Green */
+  --chart-1: #538E26; /* Forest Green */
   --chart-2: oklch(0.74 0.16 67); /* Warm Orange */
   --chart-3: oklch(0.24 0.09 50); /* Rich Brown */
   --chart-4: oklch(0.95 0.05 98); /* Sage Green */
-  --chart-5: oklch(0.74 0.19 123); /* Vibrant Green */
+  --chart-5: #7BCC3E; /* Vibrant Green */
   --sidebar: oklch(0.95 0.05 98); /* Sage Green */
   --sidebar-foreground: oklch(0.24 0.09 50); /* Rich Brown */
-  --sidebar-primary: oklch(0.53 0.16 138); /* Forest Green */
+  --sidebar-primary: #538E26; /* Forest Green */
   --sidebar-primary-foreground: oklch(0.985 0 0); /* White for contrast */
-  --sidebar-accent: oklch(0.74 0.19 123); /* Vibrant Green */
+  --sidebar-accent: #7BCC3E; /* Vibrant Green */
   --sidebar-accent-foreground: oklch(0.24 0.09 50); /* Rich Brown */
   --sidebar-border: oklch(0.3 0.05 50); /* Desaturated Rich Brown */
   --sidebar-ring: oklch(0.4 0.05 50); /* Slightly darker Desaturated Rich Brown */
@@ -116,11 +116,11 @@
   --border: oklch(0.18 0.07 50);
   --input: oklch(0.18 0.07 50);
   --ring: oklch(0.4 0.05 50);
-  --chart-1: oklch(0.53 0.16 138); /* Forest Green */
+  --chart-1: #538E26; /* Forest Green */
   --chart-2: oklch(0.74 0.16 67); /* Warm Orange */
   --chart-3: oklch(0.24 0.09 50); /* Rich Brown */
   --chart-4: oklch(0.95 0.05 98); /* Sage Green */
-  --chart-5: oklch(0.74 0.19 123); /* Vibrant Green */
+  --chart-5: #7BCC3E; /* Vibrant Green */
   --sidebar: oklch(0.24 0.09 50); /* Rich Brown */
   --sidebar-foreground: oklch(0.95 0.05 98); /* Sage Green */
   --sidebar-primary: oklch(0.95 0.05 98); /* Sage Green */

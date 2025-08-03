@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@/components/ui/button.jsx'
-import { Phone, Mail, MapPin, Settings, Wrench, CheckCircle } from 'lucide-react'
+import { Phone, Mail, MapPin, Settings, Wrench, CheckCircle, Drill } from 'lucide-react'
 import heroImage from './assets/hero-image.png'
 import solutionImage from './assets/solution-image.png'
 import './App.css'
@@ -22,7 +22,7 @@ function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center py-4">
               <div className="flex items-center">
-                <img src="/logo/Bedrock-logo-color.png" alt="Bedrock Gambia" className="h-16 w-auto" />
+                <img src="/logo/Bedrock-Color-without-tagline.svg" alt="Bedrock Gambia" className="h-[100px] w-auto" />
               </div>
               <nav className="hidden md:flex space-x-8">
                 <Link to="/" className="text-card-foreground hover:text-primary transition-colors">Home</Link>
@@ -100,9 +100,9 @@ function App() {
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Borehole Drilling */}
-                    <div className="bg-[#F7F0CA] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="bg-[#F2F3AE] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                        <Settings className="h-6 w-6 text-primary" />
+                        <Drill className="h-6 w-6 text-primary" />
                       </div>
                       <h3 className="text-xl font-bold text-card-foreground mb-4">Borehole Drilling</h3>
                       <p className="text-muted-foreground mb-6">
@@ -117,7 +117,7 @@ function App() {
                     </div>
 
                     {/* Water Filtration Installation */}
-                    <div className="bg-[#F7F0CA] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="bg-[#F2F3AE] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
                         <Settings className="h-6 w-6 text-primary" />
                       </div>
@@ -131,7 +131,7 @@ function App() {
                     </div>
 
                     {/* Maintenance & After-Service */}
-                    <div className="bg-[#F7F0CA] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="bg-[#F2F3AE] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
                         <Wrench className="h-6 w-6 text-primary" />
                       </div>
@@ -154,7 +154,7 @@ function App() {
               <section className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="text-center mb-16">
-                    <div className="inline-block bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4">
+                    <div className="inline-block bg-accent/20 text-black px-4 py-2 rounded-full text-sm font-medium mb-4">
                       🏆 Why Choose Gambia
                     </div>
                     <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
@@ -271,7 +271,7 @@ function App() {
               </section>
 
               {/* Footer */}
-              <footer className="bg-card text-card-foreground py-12">
+              <footer className="bg-white text-card-foreground py-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="text-center">
                     <div className="flex items-center justify-center mb-4">
