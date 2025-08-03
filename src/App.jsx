@@ -59,7 +59,7 @@ function App() {
                         <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
                           Get Started Today
                         </Button>
-                        <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                        <Button size="lg" variant="outline" className="border-primary-foreground text-black hover:bg-primary-foreground hover:text-primary bg-white">
                           Learn More
                         </Button>
                       </div>
@@ -84,7 +84,7 @@ function App() {
               </section>
 
               {/* Services Section */}
-              <section id="services" className="py-20 bg-muted">
+              <section id="services" className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="text-center mb-16">
                     <div className="inline-block bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4">
@@ -100,7 +100,7 @@ function App() {
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Borehole Drilling */}
-                    <div className="bg-card rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="bg-[#F7F0CA] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
                         <Settings className="h-6 w-6 text-primary" />
                       </div>
@@ -117,7 +117,7 @@ function App() {
                     </div>
 
                     {/* Water Filtration Installation */}
-                    <div className="bg-card rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="bg-[#F7F0CA] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
                         <Settings className="h-6 w-6 text-primary" />
                       </div>
@@ -125,20 +125,13 @@ function App() {
                       <p className="text-muted-foreground mb-6">
                         Complete filtration systems for clean, safe water.
                       </p>
-                      <div className="bg-muted rounded-lg p-4 mb-6">
-                        <img 
-                          src={solutionImage} 
-                          alt="Water filtration system diagram" 
-                          className="w-full h-32 object-contain"
-                        />
-                      </div>
                       <p className="text-sm text-muted-foreground">
                         Comprehensive filtration systems ensure your water is ready for immediate use.
                       </p>
                     </div>
 
                     {/* Maintenance & After-Service */}
-                    <div className="bg-card rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="bg-[#F7F0CA] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
                         <Wrench className="h-6 w-6 text-primary" />
                       </div>
@@ -158,7 +151,7 @@ function App() {
               </section>
 
               {/* Features Section */}
-              <section className="py-20 bg-background">
+              <section className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="text-center mb-16">
                     <div className="inline-block bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4">
