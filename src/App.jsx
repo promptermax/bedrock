@@ -22,9 +22,7 @@ function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center py-4">
               <div className="flex items-center">
-                <img src="/logo/Bedrock-logo-color.png" alt="Bedrock Gambia" className="h-8 w-auto mr-2" />
-                <span className="text-xl font-arsenica-extrabold text-card-foreground">Bedrock Gambia</span>
-                <span className="text-sm font-arsenica-medium text-muted-foreground ml-2">From the ground, to growth</span>
+                <img src="/logo/Bedrock-logo-color.png" alt="Bedrock Gambia" className="h-8 w-auto" />
               </div>
               <nav className="hidden md:flex space-x-8">
                 <Link to="/" className="text-card-foreground hover:text-primary transition-colors">Home</Link>
@@ -284,8 +282,7 @@ function App() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="text-center">
                     <div className="flex items-center justify-center mb-4">
-                      <img src="/logo/Bedrock-full-logo-color.png" alt="Bedrock Gambia" className="h-8 w-auto mr-2" />
-                      <span className="text-xl font-arsenica-extrabold">Bedrock Gambia</span>
+                      <img src="/logo/Bedrock-full-logo-color.png" alt="Bedrock Gambia" className="h-12 w-auto mr-2" />
                     </div>
                     <p className="text-muted-foreground mb-4 font-arsenica-medium">From the ground, to growth</p>
                     <p className="text-muted-foreground text-sm">
