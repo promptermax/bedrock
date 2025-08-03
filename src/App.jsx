@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@/components/ui/button.jsx'
-import { Phone, Mail, MapPin, Droplets, Settings, Wrench, CheckCircle } from 'lucide-react'
+import { Phone, Mail, MapPin, Settings, Wrench, CheckCircle } from 'lucide-react'
 import heroImage from './assets/hero-image.png'
 import solutionImage from './assets/solution-image.png'
 import './App.css'
@@ -18,11 +18,11 @@ function App() {
     <Router>
       <div className="min-h-screen bg-background">
         {/* Header */}
-        <header className="bg-card shadow-sm">
+        <header className="fixed top-0 left-0 right-0 bg-card shadow-sm z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center py-4">
               <div className="flex items-center">
-                <Droplets className="h-8 w-8 text-primary mr-2" />
+                <img src="/logo/Bedrock-logo-color.png" alt="Bedrock Gambia" className="h-8 w-auto mr-2" />
                 <span className="text-xl font-arsenica-extrabold text-card-foreground">Bedrock Gambia</span>
                 <span className="text-sm font-arsenica-medium text-muted-foreground ml-2">From the ground, to growth</span>
               </div>
@@ -42,7 +42,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={
-            <>
+            <div className="pt-20">
               {/* Hero Section */}
               <section className="hero-section bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-primary-foreground py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -104,7 +104,7 @@ function App() {
                     {/* Borehole Drilling */}
                     <div className="bg-card rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                        <Droplets className="h-6 w-6 text-primary" />
+                        <Settings className="h-6 w-6 text-primary" />
                       </div>
                       <h3 className="text-xl font-bold text-card-foreground mb-4">Borehole Drilling</h3>
                       <p className="text-muted-foreground mb-6">
@@ -284,7 +284,7 @@ function App() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="text-center">
                     <div className="flex items-center justify-center mb-4">
-                      <Droplets className="h-8 w-8 text-primary mr-2" />
+                      <img src="/logo/Bedrock-full-logo-color.png" alt="Bedrock Gambia" className="h-8 w-auto mr-2" />
                       <span className="text-xl font-arsenica-extrabold">Bedrock Gambia</span>
                     </div>
                     <p className="text-muted-foreground mb-4 font-arsenica-medium">From the ground, to growth</p>
@@ -297,7 +297,7 @@ function App() {
                   </div>
                 </div>
               </footer>
-            </>
+            </div>
           } />
           <Route path="/get-a-quote" element={<GetAQuoteForm />} />
           <Route path="/faq" element={<FAQPage />} />
