@@ -45,12 +45,12 @@ const faqs = [
 
 const FAQPage = () => (
   <div className="max-w-2xl mx-auto py-16 px-4">
-    <h1 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h1>
+    <h1 className="text-3xl font-bold mb-8 text-center text-card-foreground">Frequently Asked Questions</h1>
     <div className="space-y-6">
       {faqs.map((faq, idx) => (
-        <div key={idx} className="bg-white rounded-lg shadow p-6">
-          <h2 className="font-semibold text-lg mb-2">{faq.question}</h2>
-          <p className="text-gray-700">{faq.answer}</p>
+        <div key={idx} className="bg-card rounded-lg shadow p-6">
+          <h2 className="font-semibold text-lg mb-2 text-card-foreground">{faq.question}</h2>
+          <p className="text-muted-foreground">{faq.answer}</p>
         </div>
       ))}
     </div>

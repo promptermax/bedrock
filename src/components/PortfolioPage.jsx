@@ -89,15 +89,15 @@ const projects = [
 
 const PortfolioPage = () => (
   <div className="max-w-7xl mx-auto py-16 px-4">
-    <h1 className="text-4xl font-bold mb-8 text-center">Project Portfolio</h1>
+    <h1 className="text-4xl font-bold mb-8 text-center text-card-foreground">Project Portfolio</h1>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {projects.map((project, idx) => (
-        <div key={idx} className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow p-6 flex flex-col">
+        <div key={idx} className="bg-card rounded-xl shadow-lg hover:shadow-2xl transition-shadow p-6 flex flex-col">
           <img src={project.image} alt={project.title} className="w-full h-48 object-cover rounded-lg mb-4" />
-          <h3 className="text-xl font-bold text-blue-700 mb-2">{project.title}</h3>
-          <p className="text-gray-700 mb-2 flex-1">{project.description}</p>
-          <div className="text-sm text-gray-500 mb-1">{project.location}</div>
-          <div className="text-xs text-gray-400">{project.date}</div>
+          <h3 className="text-xl font-bold text-primary mb-2">{project.title}</h3>
+          <p className="text-muted-foreground mb-2 flex-1">{project.description}</p>
+          <div className="text-sm text-muted-foreground mb-1">{project.location}</div>
+          <div className="text-xs text-muted-foreground/70">{project.date}</div>
         </div>
       ))}
     </div>

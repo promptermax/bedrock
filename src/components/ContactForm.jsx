@@ -29,11 +29,11 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3 max-w-md mx-auto">
-      <h2 className="text-xl font-bold">Contact Us</h2>
-      {error && <div className="text-red-500">{error}</div>}
-      {success && <div className="text-green-600">Thank you for contacting us!</div>}
+      <h2 className="text-xl font-bold text-card-foreground">Contact Us</h2>
+      {error && <div className="text-destructive">{error}</div>}
+      {success && <div className="text-accent">Thank you for contacting us!</div>}
       <div>
-        <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+        <label htmlFor="contact-name" className="block text-sm font-medium text-card-foreground mb-1">Name</label>
         <input
           id="contact-name"
           type="text"
@@ -42,11 +42,11 @@ const ContactForm = () => {
           value={form.name}
           onChange={handleChange}
           required
-          className="w-full border p-2 rounded"
+          className="w-full border border-border bg-background text-foreground p-2 rounded"
         />
       </div>
       <div>
-        <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <label htmlFor="contact-email" className="block text-sm font-medium text-card-foreground mb-1">Email</label>
         <input
           id="contact-email"
           type="email"
@@ -55,11 +55,11 @@ const ContactForm = () => {
           value={form.email}
           onChange={handleChange}
           required
-          className="w-full border p-2 rounded"
+          className="w-full border border-border bg-background text-foreground p-2 rounded"
         />
       </div>
       <div>
-        <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 mb-1">Phone (optional)</label>
+        <label htmlFor="contact-phone" className="block text-sm font-medium text-card-foreground mb-1">Phone (optional)</label>
         <input
           id="contact-phone"
           type="tel"
@@ -67,11 +67,11 @@ const ContactForm = () => {
           placeholder="Phone (optional)"
           value={form.phone}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full border border-border bg-background text-foreground p-2 rounded"
         />
       </div>
       <div>
-        <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+        <label htmlFor="contact-message" className="block text-sm font-medium text-card-foreground mb-1">Your Message</label>
         <textarea
           id="contact-message"
           name="message"
@@ -79,11 +79,11 @@ const ContactForm = () => {
           value={form.message}
           onChange={handleChange}
           required
-          className="w-full border p-2 rounded"
+          className="w-full border border-border bg-background text-foreground p-2 rounded"
         />
       </div>
       <div>
-        <label htmlFor="contact-human" className="block text-sm font-medium text-gray-700 mb-1">What is 3 + 4? (Human verification)</label>
+        <label htmlFor="contact-human" className="block text-sm font-medium text-card-foreground mb-1">What is 3 + 4? (Human verification)</label>
         <input
           id="contact-human"
           type="text"
@@ -92,10 +92,10 @@ const ContactForm = () => {
           value={form.human}
           onChange={handleChange}
           required
-          className="w-full border p-2 rounded"
+          className="w-full border border-border bg-background text-foreground p-2 rounded"
         />
       </div>
-      <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Send</button>
+      <button type="submit" className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded">Send</button>
     </form>
   );
 };
