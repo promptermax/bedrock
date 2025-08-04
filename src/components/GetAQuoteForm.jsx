@@ -29,7 +29,6 @@ const GetAQuoteForm = () => {
     tankSize: '',
     region: '',
     district: '',
-    wantCall: false,
     callTime: '',
   });
   const [error, setError] = useState('');
@@ -167,7 +166,9 @@ const GetAQuoteForm = () => {
             ))}
           </select>
         </div>
-        <select
+        <div>
+          <label htmlFor="district" className="block font-medium text-card-foreground">District<span className="text-red-500">*</span></label>
+          <select
             id="district"
             name="district"
             value={form.district}
