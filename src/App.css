@@ -287,20 +287,6 @@ input.error, select.error, textarea.error {
   padding: 20px;
 }
 
-.radio-option,
-.checkbox-option {
-  display: flex;
-  align-items: center; /* This is the key change */
-  gap: 8px;
-  margin-bottom: 5px;
-}
-
-/* We don't need the manual pixel adjustment anymore */
-.radio-option input[type="radio"],
-.checkbox-option input[type="checkbox"] {
-  margin: 0;
-}
-
 /* Optional: Consider keeping the fieldset border for accessibility */
 fieldset {
   /*

@@ -111,42 +111,22 @@ const GetAQuoteForm = () => {
           />
         </div>
 
-        <fieldset>
-          <legend className="block font-medium text-card-foreground">Select Package:<span className="text-red-500">*</span></legend>
-          <div className="radio-option">
-            <label htmlFor="electricity" className="mr-4 text-card-foreground">
-              <input
-                type="radio"
-                id="electricity"
-                name="power"
-                value="Electricity"
-                checked={form.power === 'Electricity'}
-                onChange={handleChange}
-                required
-              />
-              Electricity
-            </label>
-          </div>
-          <div className="radio-option">
-            <label htmlFor="solar" className="mr-4 text-card-foreground">
-              <input type="radio" id="solar" name="power" value="Solar" checked={form.power === 'Solar'} onChange={handleChange} required /> Solar
-            </label>
-          </div>
-          <div className="radio-option">
-            <label className="text-card-foreground">
-              <input
-                type="radio"
-                id="drilling"
-                name="power"
-                value="Drilling Only"
-                checked={form.power === 'Drilling Only'}
-                onChange={handleChange}
-                required
-              />
-              Drilling Only
-            </label>
-          </div>
-        </fieldset>
+        <div>
+          <label htmlFor="power" className="block font-medium text-card-foreground">Select Package:<span className="text-red-500">*</span></label>
+          <select
+            id="power"
+            name="power"
+            value={form.power}
+            onChange={handleChange}
+            required
+            className="w-full border border-border bg-background text-foreground p-2 rounded"
+          >
+            <option value="">Select a package</option>
+            <option value="Electricity">Electricity</option>
+            <option value="Solar">Solar</option>
+            <option value="Drilling Only">Drilling Only</option>
+          </select>
+        </div>
 
         {(form.power === 'Electricity' || form.power === 'Solar') && (
           <div>
