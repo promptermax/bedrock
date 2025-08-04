@@ -52,7 +52,7 @@ function App() {
                         🚀 Trusted Water Solutions
                       </div>
                       <h1 className="text-4xl md:text-5xl font-arsenica-extrabold mb-6">
-                        From the ground, to growth
+                        From ground to growth
                       </h1>
                       <p className="text-xl text-primary-foreground/90 mb-8">
                         Your trusted partner for borehole drilling and water system maintenance in The Gambia. We provide reliable access to clean, safe water for homes, farms, and businesses.

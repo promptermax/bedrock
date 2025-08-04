@@ -199,7 +199,21 @@ const GetAQuoteForm = () => {
             I want to be called
           </label>
         </div>
-        {form.wantCall && (
+        <div>
+          <label htmlFor="wantCall" className="block font-medium text-card-foreground">Do you want to be called?</label>
+          <select
+            id="wantCall"
+            name="wantCall"
+            value={form.wantCall}
+            onChange={handleChange}
+            className="w-full border border-border bg-background text-foreground p-2 rounded"
+          >
+            <option value="">Select an option</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+        {form.wantCall === 'true' && (
           <input
             type="time"
             id="callTime"
