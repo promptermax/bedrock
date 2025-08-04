@@ -281,3 +281,14 @@ form textarea:focus {
 input.error, select.error, textarea.error {
   border-color: red;
 }
+
+.form-container {
+  margin-top: 80px;
+  padding: 20px;
+}
+
+.radio-option, .checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

@@ -45,38 +45,38 @@ function validateForm(formId) {
 
   // Email validation (basic)
   const emailField = form.querySelector('input[type="email"]');
-  if (emailField && !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailField.value)) {
+  if (emailField && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailField.value)) {
     isValid = false;
     emailField.classList.add('error');
   }
 
+    // Phone validation (basic)
+    const phoneField = form.querySelector('input[type="tel"]');
+    if (phoneField && !/^\d{8,15}$/.test(phoneField.value)) { // Basic check for 8-15 digits
+        isValid = false;
+        phoneField.classList.add('error');
+    }
+
+
   if (!isValid) {
-    alert('Please fill in all required fields correctly.');
+    alert('Please fill in all required fields correctly and use valid email and phone number formats.');
   }
 
   return isValid;
 }
 
 async function onSubmit(event, formId) {
-    event.preventDefault();
+  event.preventDefault();
 
-    if (!validateForm(formId)) {
-      return;
-    }
+  if (!validateForm(formId)) {
+    return;
+  }
 
-    const recaptchaContainer = document.getElementById('recaptcha-container');
-
+  const recaptchaContainer = document.getElementById('recaptcha-container');
     const siteKey = "6LeIxAcTAAAAAJcZVRqyHh71riL_dGzKjdR8-PUh";
 
     grecaptcha.ready(function() {
         grecaptcha.execute(siteKey, {action: 'submit'}).then(function(token) {
-            // Add your logic to submit to your backend server along with the token:
-            // alert("reCaptcha working. Congrats!");
-            // if (token) {
-            // } else {
-            //     alert("reCaptcha failed.");
-            // }
-
             const form = document.getElementById(formId);
 
             let formData = new FormData(form);

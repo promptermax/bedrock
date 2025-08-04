@@ -10,12 +10,6 @@ const regions = [
   { name: 'Upper River', districts: ['Basse', 'Wuli East', 'Wuli West'] },
 ];
 
-const services = [
-  'Borehole Drilling',
-  'Water Filtration Installation',
-  'Maintenance & After-Service',
-];
-
 const tankSizes = [
   '500 liters',
   '1000 liters',
@@ -31,14 +25,12 @@ const GetAQuoteForm = () => {
     name: '',
     email: '',
     phone: '',
-    service: '',
     power: '',
     tankSize: '',
     region: '',
     district: '',
     wantCall: false,
     callTime: '',
-    human: '',
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
@@ -51,16 +43,16 @@ const GetAQuoteForm = () => {
     });
   };
 
-    useEffect(() => {
-        // Load reCAPTCHA script
-        const script = document.createElement('script');
-        script.src = "https://www.google.com/recaptcha/api.js?render=6LeIxAcTAAAAAJcZVRqyHh71riL_dGzKjdR8-PUh";
-        script.async = true;
-        script.onload = () => {
-            console.log("reCAPTCHA script loaded");
-        };
-        document.head.appendChild(script);
-    }, []);
+  useEffect(() => {
+    // Load reCAPTCHA script
+    const script = document.createElement('script');
+    script.src = "https://www.google.com/recaptcha/api.js?render=6LeIxAcTAAAAAJcZVRqyHh71riL_dGzKjdR8-PUh";
+    script.async = true;
+    script.onload = () => {
+      console.log("reCAPTCHA script loaded");
+    };
+    document.head.appendChild(script);
+  }, []);
 
   const handleRegionChange = (e) => {
     setForm({ ...form, region: e.target.value, district: '' });
@@ -68,36 +60,17 @@ const GetAQuoteForm = () => {
   };
 
   const handleSubmit = (e) => {
-      onSubmit(e, "quoteForm");
+    onSubmit(e, "quoteForm");
   };
 
   const selectedRegion = regions.find(r => r.name === form.region);
 
   return (
-    <main className="main-content-container">
+    <main className="form-container">
       <form id="quoteForm" action="/submit-quote" method="POST" className="space-y-4 max-w-md mx-auto pt-20" onSubmit={handleSubmit}>
         <h2 className="text-xl font-bold text-card-foreground">Get a Quote</h2>
         {error && <div className="text-destructive">{error}</div>}
         {success && <div className="text-accent">Thank you for your request!</div>}
-
-        <div>
-          <label htmlFor="service" className="block font-medium text-card-foreground">Service</label>
-          <select
-            id="service"
-            name="service"
-            value={form.service}
-            onChange={handleChange}
-            required
-            className="w-full border border-border bg-background text-foreground p-2 rounded"
-          >
-          <option value="">Select a service</option>
-            {services.map((service) => (
-              <option key={service} value={service}>
-                {service}
-              </option>
-            ))}
-          </select>
-        </div>
 
         <div>
           <label htmlFor="name" className="block font-medium text-card-foreground">Name<span className="text-red-500">*</span></label>
@@ -129,7 +102,7 @@ const GetAQuoteForm = () => {
           <label htmlFor="phone" className="block font-medium text-card-foreground">Phone</label>
           <input
             type="tel"
-            id = "phone"
+            id="phone"
             name="phone"
             placeholder="Phone"
             value={form.phone}
@@ -140,40 +113,46 @@ const GetAQuoteForm = () => {
 
         <fieldset>
           <legend className="block font-medium text-card-foreground">Select Package:<span className="text-red-500">*</span></legend>
-          <label className="mr-4 text-card-foreground">
-            <input
-              type="radio"
-              id="electricity"
-              name="power"
-              value="Electricity"
-              checked={form.power === 'Electricity'}
-              onChange={handleChange}
-              required
-            />
-            Electricity
-          </label>
-          <label className="mr-4 text-card-foreground">
-            <input type="radio" id="solar" name="power" value="Solar" checked={form.power === 'Solar'} onChange={handleChange} required /> Solar
-          </label>
-          <label className="text-card-foreground">
-            <input
-              type="radio"
-              id = "drilling"
-              name="power"
-              value="Drilling Only"
-              checked={form.power === 'Drilling Only'}
-              onChange={handleChange}
-              required
-            />
-            Drilling Only
-          </label>
+          <div className="radio-option">
+            <label htmlFor="electricity" className="mr-4 text-card-foreground">
+              <input
+                type="radio"
+                id="electricity"
+                name="power"
+                value="Electricity"
+                checked={form.power === 'Electricity'}
+                onChange={handleChange}
+                required
+              />
+              Electricity
+            </label>
+          </div>
+          <div className="radio-option">
+            <label htmlFor="solar" className="mr-4 text-card-foreground">
+              <input type="radio" id="solar" name="power" value="Solar" checked={form.power === 'Solar'} onChange={handleChange} required /> Solar
+            </label>
+          </div>
+          <div className="radio-option">
+            <label className="text-card-foreground">
+              <input
+                type="radio"
+                id="drilling"
+                name="power"
+                value="Drilling Only"
+                checked={form.power === 'Drilling Only'}
+                onChange={handleChange}
+                required
+              />
+              Drilling Only
+            </label>
+          </div>
         </fieldset>
 
         {(form.power === 'Electricity' || form.power === 'Solar') && (
           <div>
             <label htmlFor="tankSize" className="block font-medium text-card-foreground">Tank Size (liters)<span className="text-red-500">*</span></label>
             <select
-              id = "tankSize"
+              id="tankSize"
               name="tankSize"
               value={form.tankSize}
               onChange={handleChange}
@@ -193,7 +172,7 @@ const GetAQuoteForm = () => {
         <div>
           <label htmlFor="region" className="block font-medium text-card-foreground">Region<span className="text-red-500">*</span></label>
           <select
-            id = "region"
+            id="region"
             name="region"
             value={form.region}
             onChange={handleRegionChange}
@@ -211,7 +190,7 @@ const GetAQuoteForm = () => {
         <div>
           <label htmlFor="district" className="block font-medium text-card-foreground">District<span className="text-red-500">*</span></label>
           <select
-            id = "district"
+            id="district"
             name="district"
             value={form.district}
             onChange={handleChange}
@@ -228,11 +207,11 @@ const GetAQuoteForm = () => {
               ))}
           </select>
         </div>
-        <div>
-          <label className="text-card-foreground">
+        <div  className="checkbox-option">
+          <label htmlFor="wantCall" className="text-card-foreground">
             <input
               type="checkbox"
-              id = "wantCall"
+              id="wantCall"
               name="wantCall"
               checked={form.wantCall}
               onChange={handleChange}
@@ -243,7 +222,7 @@ const GetAQuoteForm = () => {
         {form.wantCall && (
           <input
             type="time"
-            id = "callTime"
+            id="callTime"
             name="callTime"
             value={form.callTime}
             onChange={handleChange}
@@ -251,7 +230,7 @@ const GetAQuoteForm = () => {
             className="w-full border border-border bg-background text-foreground p-2 rounded"
           />
         )}
-          <div id="recaptcha-container"></div>
+        <div id="recaptcha-container"></div>
         <button type="submit" className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded cta-button">Request Quote</button>
       </form>
     </main>
