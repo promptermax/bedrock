@@ -31,9 +31,9 @@ function App() {
         <a href="#contact" className="text-card-foreground hover:text-primary transition-colors">Contact</a>
         <Link to="/faq" className="text-card-foreground hover:text-primary transition-colors">FAQ</Link>
       </nav>
-      <Link to="/get-a-quote">
-        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">Get Quote</Button>
-      </Link>
+              <Link to="/get-a-quote">
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground cta-button">Get Quote</Button>
+              </Link>
     </div>
   </div>
 </header>
