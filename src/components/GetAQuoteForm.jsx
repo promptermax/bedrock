@@ -211,7 +211,7 @@ const GetAQuoteForm = () => {
             <option value="">Select an option</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
-          </select>
+        </select>
         </div>
         {form.wantCall === 'true' && (
           <input
