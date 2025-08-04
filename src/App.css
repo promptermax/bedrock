@@ -287,7 +287,14 @@ input.error, select.error, textarea.error {
   padding: 20px;
 }
 
-.radio-option, .checkbox-option {
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px; /* Add some spacing between radio options */
+}
+
+.checkbox-option {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -298,4 +305,17 @@ input.error, select.error, textarea.error {
 .checkbox-option input[type="checkbox"] {
   margin: 0;
   vertical-align: middle;
+}
+
+
+/* Adjustments for legend */
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  font-weight: bold;
+  margin-bottom: 5px;
 }

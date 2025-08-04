@@ -30,7 +30,7 @@ function App() {
         <Link to="/" className="text-card-foreground hover:text-primary transition-colors">Home</Link>
         <a href="#services" className="text-card-foreground hover:text-primary transition-colors">Services</a>
                 <a href="#why-choose-us" className="text-card-foreground hover:text-primary transition-colors">Why Us</a>
-                <a href="#contact" className="text-card-foreground hover:text-primary transition-colors">Contact</a>
+        <a href="#contact" className="text-card-foreground hover:text-primary transition-colors">Contact</a>
         <Link to="/faq" className="text-card-foreground hover:text-primary transition-colors">FAQ</Link>
       </nav>
               <Link to="/get-a-quote">
@@ -153,7 +153,7 @@ function App() {
               </section>
 
               {/* Features Section */}
-              <section className="py-20 bg-white">
+              <section id = "why-choose-us" className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="text-center mb-16">
                     <div className="inline-block bg-accent/20 text-black px-4 py-2 rounded-full text-sm font-medium mb-4">
