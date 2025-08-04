@@ -9,12 +9,30 @@ const regions = [
   { name: 'Upper River', districts: ['Basse', 'Wuli East', 'Wuli West'] },
 ];
 
+const services = [
+  'Borehole Drilling',
+  'Water Filtration Installation',
+  'Maintenance & After-Service',
+];
+
+const tankSizes = [
+  '500 liters',
+  '1000 liters',
+  '2000 liters',
+  '3000 liters',
+  '4000 liters',
+  '5000 liters',
+  '10000 liters',
+];
+
 const GetAQuoteForm = () => {
   const [form, setForm] = useState({
     name: '',
     email: '',
     phone: '',
+    service: '',
     power: '',
+    tankSize: '',
     region: '',
     district: '',
     wantCall: false,
@@ -45,7 +63,19 @@ const GetAQuoteForm = () => {
     setError('');
     setSuccess(true);
     console.log('Quote form submitted:', form);
-    setForm({ name: '', email: '', phone: '', power: '', region: '', district: '', wantCall: false, callTime: '', human: '' });
+    setForm({
+      name: '',
+      email: '',
+      phone: '',
+      service: '',
+      power: '',
+      tankSize: '',
+      region: '',
+      district: '',
+      wantCall: false,
+      callTime: '',
+      human: ''
+    });
   };
 
   const selectedRegion = regions.find(r => r.name === form.region);
@@ -55,6 +85,25 @@ const GetAQuoteForm = () => {
       <h2 className="text-xl font-bold text-card-foreground">Get a Quote</h2>
       {error && <div className="text-destructive">{error}</div>}
       {success && <div className="text-accent">Thank you for your request!</div>}
+
+      <div>
+        <label className="block font-medium text-card-foreground">Service</label>
+        <select
+          name="service"
+          value={form.service}
+          onChange={handleChange}
+          required
+          className="w-full border border-border bg-background text-foreground p-2 rounded"
+        >
+          <option value="">Select a service</option>
+          {services.map((service) => (
+            <option key={service} value={service}>
+              {service}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <input
         type="text"
         name="name"
@@ -82,36 +131,101 @@ const GetAQuoteForm = () => {
         required
         className="w-full border border-border bg-background text-foreground p-2 rounded"
       />
+
       <div>
         <label className="block font-medium text-card-foreground">Power Type</label>
         <label className="mr-4 text-card-foreground">
-          <input type="radio" name="power" value="Electricity" checked={form.power === 'Electricity'} onChange={handleChange} required /> Electricity
+          <input
+            type="radio"
+            name="power"
+            value="Electricity"
+            checked={form.power === 'Electricity'}
+            onChange={handleChange}
+            required
+          />
+          Electricity
         </label>
-        <label className="text-card-foreground">
+        <label className="mr-4 text-card-foreground">
           <input type="radio" name="power" value="Solar" checked={form.power === 'Solar'} onChange={handleChange} required /> Solar
         </label>
+        <label className="text-card-foreground">
+          <input
+            type="radio"
+            name="power"
+            value="Drilling Only"
+            checked={form.power === 'Drilling Only'}
+            onChange={handleChange}
+            required
+          />
+          Drilling Only
+        </label>
       </div>
+
+      {(form.power === 'Electricity' || form.power === 'Solar') && (
+        <div>
+          <label className="block font-medium text-card-foreground">Tank Size (liters)</label>
+          <select
+            name="tankSize"
+            value={form.tankSize}
+            onChange={handleChange}
+            required
+            className="w-full border border-border bg-background text-foreground p-2 rounded"
+          >
+            <option value="">Select tank size</option>
+            {tankSizes.map((size) => (
+              <option key={size} value={size}>
+                {size}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
       <div>
         <label className="block font-medium text-card-foreground">Region</label>
-        <select name="region" value={form.region} onChange={handleRegionChange} required className="w-full border border-border bg-background text-foreground p-2 rounded">
+        <select
+          name="region"
+          value={form.region}
+          onChange={handleRegionChange}
+          required
+          className="w-full border border-border bg-background text-foreground p-2 rounded"
+        >
           <option value="">Select region</option>
-          {regions.map(r => (
-            <option key={r.name} value={r.name}>{r.name}</option>
+          {regions.map((r) => (
+            <option key={r.name} value={r.name}>
+              {r.name}
+            </option>
           ))}
         </select>
       </div>
       <div>
         <label className="block font-medium text-card-foreground">District</label>
-        <select name="district" value={form.district} onChange={handleChange} required className="w-full border border-border bg-background text-foreground p-2 rounded" disabled={!form.region}>
+        <select
+          name="district"
+          value={form.district}
+          onChange={handleChange}
+          required
+          className="w-full border border-border bg-background text-foreground p-2 rounded"
+          disabled={!form.region}
+        >
           <option value="">Select district</option>
-          {selectedRegion && selectedRegion.districts.map(d => (
-            <option key={d} value={d}>{d}</option>
-          ))}
+          {selectedRegion &&
+            selectedRegion.districts.map((d) => (
+              <option key={d} value={d}>
+                {d}
+              </option>
+            ))}
         </select>
       </div>
       <div>
         <label className="text-card-foreground">
-          <input type="checkbox" name="wantCall" checked={form.wantCall} onChange={handleChange} /> I want to be called
+          <input
+            type="checkbox"
+            name="wantCall"
+            checked={form.wantCall}
+            onChange={handleChange}
+          />
+          I want to be called
         </label>
       </div>
       {form.wantCall && (
@@ -139,4 +253,4 @@ const GetAQuoteForm = () => {
   );
 };
 
-export default GetAQuoteForm; 
+export default GetAQuoteForm;
