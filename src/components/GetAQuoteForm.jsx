@@ -167,9 +167,7 @@ const GetAQuoteForm = () => {
             ))}
           </select>
         </div>
-        <div>
-          <label htmlFor="district" className="block font-medium text-card-foreground">District<span className="text-red-500">*</span></label>
-          <select
+        <select
             id="district"
             name="district"
             value={form.district}
@@ -187,43 +185,6 @@ const GetAQuoteForm = () => {
               ))}
           </select>
         </div>
-        <div  className="checkbox-option">
-          <label htmlFor="wantCall" className="text-card-foreground">
-            <input
-              type="checkbox"
-              id="wantCall"
-              name="wantCall"
-              checked={form.wantCall}
-              onChange={handleChange}
-            />
-            I want to be called
-          </label>
-        </div>
-        <div>
-          <label htmlFor="wantCall" className="block font-medium text-card-foreground">Do you want to be called?</label>
-          <select
-            id="wantCall"
-            name="wantCall"
-            value={form.wantCall}
-            onChange={handleChange}
-            className="w-full border border-border bg-background text-foreground p-2 rounded"
-          >
-            <option value="">Select an option</option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-        </select>
-        </div>
-        {form.wantCall === 'true' && (
-          <input
-            type="time"
-            id="callTime"
-            name="callTime"
-            value={form.callTime}
-            onChange={handleChange}
-            required
-            className="w-full border border-border bg-background text-foreground p-2 rounded"
-          />
-        )}
         <div id="recaptcha-container"></div>
         <button type="submit" className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded cta-button">Request Quote</button>
       </form>
