@@ -86,23 +86,7 @@ const GetAQuoteForm = () => {
       {error && <div className="text-destructive">{error}</div>}
       {success && <div className="text-accent">Thank you for your request!</div>}
 
-      <div>
-        <label className="block font-medium text-card-foreground">Service</label>
-        <select
-          name="service"
-          value={form.service}
-          onChange={handleChange}
-          required
-          className="w-full border border-border bg-background text-foreground p-2 rounded"
-        >
-          <option value="">Select a service</option>
-          {services.map((service) => (
-            <option key={service} value={service}>
-              {service}
-            </option>
-          ))}
-        </select>
-      </div>
+
 
       <input
         type="text"
@@ -131,9 +115,26 @@ const GetAQuoteForm = () => {
         required
         className="w-full border border-border bg-background text-foreground p-2 rounded"
       />
+      <div>
+        <label className="block font-medium text-card-foreground">Service</label>
+        <select
+          name="service"
+          value={form.service}
+          onChange={handleChange}
+          required
+          className="w-full border border-border bg-background text-foreground p-2 rounded"
+        >
+          <option value="">Select a service</option>
+          {services.map((service) => (
+            <option key={service} value={service}>
+              {service}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <div>
-        <label className="block font-medium text-card-foreground">Power Type</label>
+        <label className="block font-medium text-card-foreground">Select Package:</label>
         <label className="mr-4 text-card-foreground">
           <input
             type="radio"
