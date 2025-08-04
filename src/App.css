@@ -289,14 +289,14 @@ input.error, select.error, textarea.error {
 
 .radio-option {
   display: flex;
-  align-items: center;
+  align-items: baseline; /* changed to baseline */
   gap: 8px;
-  margin-bottom: 5px; /* Add some spacing between radio options */
+  margin-bottom: 5px;
 }
 
 .checkbox-option {
   display: flex;
-  align-items: center;
+  align-items: baseline; /* changed to baseline */
   gap: 8px;
 }
 
@@ -304,7 +304,9 @@ input.error, select.error, textarea.error {
 .radio-option input[type="radio"],
 .checkbox-option input[type="checkbox"] {
   margin: 0;
-  vertical-align: middle;
+  /* vertical-align: middle;  removed */
+  position: relative;
+  top: 2px; /* adjusted */
 }
 
 
