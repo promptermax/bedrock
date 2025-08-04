@@ -185,7 +185,7 @@ const GetAQuoteForm = () => {
               ))}
           </select>
         </div>
-        <div id="recaptcha-container"></div>
+       <div id="recaptcha-container"></div>
         <button type="submit" className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded cta-button">Request Quote</button>
       </form>
     </main>
