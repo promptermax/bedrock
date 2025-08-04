@@ -51,7 +51,7 @@ const GetAQuoteForm = () => {
   const selectedRegion = regions.find(r => r.name === form.region);
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto pt-20">
       <h2 className="text-xl font-bold text-card-foreground">Get a Quote</h2>
       {error && <div className="text-destructive">{error}</div>}
       {success && <div className="text-accent">Thank you for your request!</div>}
