@@ -71,50 +71,53 @@ function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Borehole Drilling */}
-            <div className="bg-[#F2F3AE] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
                 <Drill className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-card-foreground mb-4">Borehole Drilling</h3>
+              <h3 className="text-xl font-bold text-card-foreground mb-4">Expert Borehole Drilling</h3>
               <p className="text-muted-foreground mb-6">
-                Professional borehole drilling using modern equipment and trained professionals.
+                We deliver reliable, long-term water access by drilling with precision and state-of-the-art equipment.
               </p>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• Site assessment and drilling</li>
-                <li>• Pump installation</li>
-                <li>• Water yield testing</li>
-                <li>• Professional equipment</li>
+                <li>• Professional site assessment & surveying</li>
+                <li>• High-efficiency pump installation</li>
+                <li>• Comprehensive water yield testing</li>
+                <li>• Casing and screen installation</li>
               </ul>
             </div>
 
             {/* Water Filtration Installation */}
-            <div className="bg-[#F2F3AE] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
                 <Settings className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-card-foreground mb-4">Water Filtration Installation</h3>
+              <h3 className="text-xl font-bold text-card-foreground mb-4">Advanced Water Filtration</h3>
               <p className="text-muted-foreground mb-6">
-                Complete filtration systems for clean, safe water.
+                Transform your borehole water into a clean, safe, and potable source with our custom filtration solutions.
               </p>
-              <p className="text-sm text-muted-foreground">
-                Comprehensive filtration systems ensure your water is ready for immediate use.
-              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>• Multi-stage sediment & particle filters</li>
+                <li>• UV purification for microbial safety</li>
+                <li>• Water softening & treatment systems</li>
+                <li>• Under-sink and whole-house setups</li>
+              </ul>
             </div>
 
             {/* Maintenance & After-Service */}
-            <div className="bg-[#F2F3AE] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
                 <Wrench className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-card-foreground mb-4">Maintenance & After-Service</h3>
+              <h3 className="text-xl font-bold text-card-foreground mb-4">Reliable System Maintenance</h3>
               <p className="text-muted-foreground mb-6">
-                Reliable post-installation servicing year after year.
+                Protect your investment and ensure uninterrupted water flow with our scheduled maintenance and support services.
               </p>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• Tank cleaning</li>
-                <li>• Submersible pump servicing</li>
-                <li>• Filter replacement</li>
-                <li>• Routine system checks</li>
+                <li>• Routine submersible pump servicing</li>
+                <li>• Scheduled tank cleaning & sanitation</li>
+                <li>• Filter inspection & replacement</li>
+                <li>• Complete system health checks</li>
               </ul>
             </div>
           </div>

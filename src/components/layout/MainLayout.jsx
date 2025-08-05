@@ -6,7 +6,7 @@ function MainLayout({ children }) {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main>{children}</main>
+      <main style={{ paddingTop: '116px' }}>{children}</main>
       <Footer />
     </div>
   );
