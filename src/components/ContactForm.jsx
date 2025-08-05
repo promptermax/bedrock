@@ -5,8 +5,7 @@ const ContactForm = () => {
   const [state, handleSubmit] = useForm("xkgzqpba");
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 max-w-md mx-auto">
-      <h2 className="text-xl font-bold text-card-foreground">Contact Us</h2>
+    <form onSubmit={handleSubmit} className="space-y-4">
       
       {state.succeeded ? (
         <div className="text-center mb-4 p-3 rounded-md bg-green-100 text-green-800">
@@ -66,10 +65,8 @@ const ContactForm = () => {
               errors={state.errors}
             />
           </div>
-          <button type="submit" disabled={state.submitting} className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded">Send</button>
-          <p className="mt-6 text-sm text-muted-foreground italic text-center">
-            This form is protected by reCAPTCHA.
-          </p>
+          <button type="submit" disabled={state.submitting} className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-6 py-2 rounded font-semibold w-full">Send Message</button>
+          <div className="text-xs text-muted-foreground text-center mt-2">We typically respond within 24 hours.</div>
         </>
       )}
     </form>
