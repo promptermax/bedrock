@@ -11,6 +11,7 @@ import { useState } from 'react'
 import FAQPage from './components/FAQPage'
 import FeaturedProjects from './components/FeaturedProjects'
 import PortfolioPage from './components/PortfolioPage'
+import AboutPage from './components/AboutPage'
 
 function App() {
   const [showContact, setShowContact] = useState(false)
@@ -61,7 +62,7 @@ function App() {
                         <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
                           Get Started Today
                         </Button>
-                        <Link to="/AboutPage">
+                        <Link to="/about">
                           <Button size="lg" variant="outline" className="border-primary-foreground text-black hover:bg-primary-foreground hover:text-primary bg-white">
                             Learn More
                           </Button>
@@ -295,6 +296,7 @@ function App() {
           <Route path="/get-a-quote" element={<GetAQuoteForm />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/about" element={<AboutPage />} />
         </Routes>
       </div>
     </Router>
