@@ -66,32 +66,22 @@ function validateForm(formId) {
 }
 
 async function onSubmit(event, formId) {
-  event.preventDefault();
+    event.preventDefault();
 
-  if (!validateForm(formId)) {
-    return;
-  }
+    if (!validateForm(formId)) {
+        return;
+    }
 
-  const recaptchaContainer = document.getElementById('recaptcha-container');
-    const siteKey = "6LeIxAcTAAAAAJcZVRqyHh71riL_dGzKjdR8-PUh";
+    const form = document.getElementById(formId);
+    let formData = new FormData(form);
 
-    grecaptcha.ready(function() {
-        grecaptcha.execute(siteKey, {action: 'submit'}).then(function(token) {
-            const form = document.getElementById(formId);
-
-            let formData = new FormData(form);
-            formData.append('recaptchaToken', token);
-
-            fetch(form.action, {
-                method: form.method,
-                body: formData,
-            }).then(response => {
-                // Handle the response from the server
-                console.log(response);
-            });
-        });
+    fetch(form.action, {
+        method: form.method,
+        body: formData,
+    }).then(response => {
+        // Handle the response from the server
+        console.log(response);
     });
-
 }
 
 export { populateDistricts, validateForm, onSubmit };
