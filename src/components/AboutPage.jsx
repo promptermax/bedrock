@@ -1,5 +1,6 @@
 // src/components/AboutPage.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import heroImage from "../assets/hero-image.png";
 
 function AboutPage() {
@@ -48,12 +49,12 @@ function AboutPage() {
           </div>
 
           <div className="text-center mt-8">
-            <a href="/services" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-md font-semibold mr-4 inline-block transition duration-300">
+            <Link to="/#services" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-md font-semibold mr-4 inline-block transition duration-300">
               View Our Services
-            </a>
-            <a href="/contact" className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-3 rounded-md font-semibold inline-block transition duration-300">
+            </Link>
+            <Link to="/get-a-quote" className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-3 rounded-md font-semibold inline-block transition duration-300">
               Get a Free Quote Today
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -174,12 +175,12 @@ function AboutPage() {
           </div>
 
           <div className="mt-8">
-            <a href="/contact" className="bg-white text-green-800 hover:bg-gray-100 px-8 py-3 rounded-md font-semibold mr-4 inline-block transition duration-300">
+            <Link to="/#contact" className="bg-white text-green-800 hover:bg-gray-100 px-8 py-3 rounded-md font-semibold mr-4 inline-block transition duration-300">
               Contact Us Today
-            </a>
-            <a href="/quote" className="border-2 border-white text-white hover:bg-white hover:text-green-800 px-8 py-3 rounded-md font-semibold inline-block transition duration-300">
+            </Link>
+            <Link to="/get-a-quote" className="border-2 border-white text-white hover:bg-white hover:text-green-800 px-8 py-3 rounded-md font-semibold inline-block transition duration-300">
               Get Free Quote
-            </a>
+            </Link>
           </div>
           
           <p className="italic opacity-80 mt-8">
