@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 
 const regions = [
   { name: 'West Coast', districts: ['Brikama', 'Kombo North', 'Kombo South'] },
@@ -14,10 +15,9 @@ const tankSizes = [
 ];
 
 const GetAQuoteForm = () => {
-  const form = useRef();
+  const [state, handleSubmit] = useForm("xvgqwvrj");
   const [region, setRegion] = useState('');
   const [powerPackage, setPowerPackage] = useState('');
-  const [formStatus, setFormStatus] = useState({ message: '', type: '' });
 
   const handleRegionChange = (e) => {
     setRegion(e.target.value);
@@ -27,46 +27,9 @@ const GetAQuoteForm = () => {
     setPowerPackage(e.target.value);
   };
 
-  const sendEmail = async (e) => {
-    e.preventDefault();
-    setFormStatus({ message: 'Sending...', type: 'info' });
-
-    const formData = new FormData(form.current);
-    const data = Object.fromEntries(formData.entries());
-
-    try {
-      const response = await fetch('/api/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: 'onboarding@resend.dev',
-          to: 'jallowabdoukarim11@gmail.com',
-          subject: 'New Quote Request',
-          html: `<p>Name: ${data.user_name}</p>
-                 <p>Email: ${data.user_email}</p>
-                 <p>Phone: ${data.user_phone}</p>
-                 <p>Package: ${data.power_package}</p>
-                 <p>Tank Size: ${data.tank_size}</p>
-                 <p>Region: ${data.region}</p>
-                 <p>District: ${data.district}</p>`,
-        }),
-      });
-
-      if (response.ok) {
-        setFormStatus({ message: 'Thank you for your request! We will get back to you shortly.', type: 'success' });
-        form.current.reset();
-        setRegion('');
-        setPowerPackage('');
-      } else {
-        const errorData = await response.json();
-        setFormStatus({ message: `Failed to send request. Please try again. Error: ${errorData.error.message}`, type: 'error' });
-      }
-    } catch (error) {
-      setFormStatus({ message: `Failed to send request. Please try again. Error: ${error.message}`, type: 'error' });
-    }
-  };
+  if (state.succeeded) {
+    return <p>Thanks for your submission!</p>;
+  }
 
   const selectedRegionData = regions.find(r => r.name === region);
 
@@ -86,15 +49,15 @@ const GetAQuoteForm = () => {
           {/* Form Section */}
           <div className="bg-card p-8 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold text-center text-primary mb-6">Project Details</h2>
-            {formStatus.message && (
-              <div className={`text-center mb-4 p-3 rounded-md ${formStatus.type === 'success' ? 'bg-green-100 text-green-800' : formStatus.type === 'error' ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'}`}>
-                {formStatus.message}
-              </div>
-            )}
-            <form ref={form} onSubmit={sendEmail} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input type="text" name="user_name" placeholder="Your Name" required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
                 <input type="email" name="user_email" placeholder="Your Email" required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
+                <ValidationError 
+                  prefix="Email" 
+                  field="email"
+                  errors={state.errors}
+                />
               </div>
               <input type="tel" name="user_phone" placeholder="Your Phone Number" className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
               
@@ -122,7 +85,7 @@ const GetAQuoteForm = () => {
                   {selectedRegionData && selectedRegionData.districts.map(d => <option key={d} value={d}>{d}</option>)}
                 </select>
               </div>
-              <button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-md font-semibold text-lg cta-button">Request Free Quote</button>
+              <button type="submit" disabled={state.submitting} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-md font-semibold text-lg cta-button">Request Free Quote</button>
             </form>
           </div>
 
