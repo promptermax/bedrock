@@ -28,7 +28,11 @@ const GetAQuoteForm = () => {
   };
 
   if (state.succeeded) {
-    return <p>Thanks for your submission!</p>;
+    return (
+      <div className="text-center mb-4 p-3 rounded-md bg-green-100 text-green-800">
+        <p>Thank you for your request! We will get back to you shortly.</p>
+      </div>
+    );
   }
 
   const selectedRegionData = regions.find(r => r.name === region);
