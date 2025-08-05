@@ -54,50 +54,50 @@ const GetAQuoteForm = () => {
           <div className="bg-card p-8 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold text-center text-primary mb-6">Project Details</h2>
             
-            {state.succeeded && (
+            {state.succeeded ? (
               <div className="text-center mb-4 p-3 rounded-md bg-green-100 text-green-800">
                 <p>Thank you for your request! We will get back to you shortly.</p>
               </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <input type="text" name="user_name" placeholder="Your Name" required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
+                  <input type="email" name="user_email" placeholder="Your Email" required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
+                  <ValidationError 
+                    prefix="Email" 
+                    field="email"
+                    errors={state.errors}
+                  />
+                </div>
+                <input type="tel" name="user_phone" placeholder="Your Phone Number" className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
+                
+                <select name="power_package" value={powerPackage} onChange={handlePowerChange} required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary">
+                  <option value="">Select a Package*</option>
+                  <option value="Electricity">Electricity Package</option>
+                  <option value="Solar">Solar Package</option>
+                  <option value="Drilling Only">Drilling Only</option>
+                </select>
+
+                {(powerPackage === 'Electricity' || powerPackage === 'Solar') && (
+                  <select name="tank_size" required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary">
+                    <option value="">Select Tank Size*</option>
+                    {tankSizes.map(size => <option key={size} value={size}>{size}</option>)}
+                  </select>
+                )}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <select name="region" value={region} onChange={handleRegionChange} required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary">
+                    <option value="">Select Region*</option>
+                    {regions.map(r => <option key={r.name} value={r.name}>{r.name}</option>)}
+                  </select>
+                  <select name="district" required disabled={!region} className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary disabled:bg-gray-100">
+                    <option value="">Select District*</option>
+                    {selectedRegionData && selectedRegionData.districts.map(d => <option key={d} value={d}>{d}</option>)}
+                  </select>
+                </div>
+                <button type="submit" disabled={state.submitting} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-md font-semibold text-lg cta-button">Request Free Quote</button>
+              </form>
             )}
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input type="text" name="user_name" placeholder="Your Name" required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
-                <input type="email" name="user_email" placeholder="Your Email" required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
-                <ValidationError 
-                  prefix="Email" 
-                  field="email"
-                  errors={state.errors}
-                />
-              </div>
-              <input type="tel" name="user_phone" placeholder="Your Phone Number" className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
-              
-              <select name="power_package" value={powerPackage} onChange={handlePowerChange} required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary">
-                <option value="">Select a Package*</option>
-                <option value="Electricity">Electricity Package</option>
-                <option value="Solar">Solar Package</option>
-                <option value="Drilling Only">Drilling Only</option>
-              </select>
-
-              {(powerPackage === 'Electricity' || powerPackage === 'Solar') && (
-                <select name="tank_size" required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary">
-                  <option value="">Select Tank Size*</option>
-                  {tankSizes.map(size => <option key={size} value={size}>{size}</option>)}
-                </select>
-              )}
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <select name="region" value={region} onChange={handleRegionChange} required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary">
-                  <option value="">Select Region*</option>
-                  {regions.map(r => <option key={r.name} value={r.name}>{r.name}</option>)}
-                </select>
-                <select name="district" required disabled={!region} className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary disabled:bg-gray-100">
-                  <option value="">Select District*</option>
-                  {selectedRegionData && selectedRegionData.districts.map(d => <option key={d} value={d}>{d}</option>)}
-                </select>
-              </div>
-              <button type="submit" disabled={state.submitting} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-md font-semibold text-lg cta-button">Request Free Quote</button>
-            </form>
           </div>
 
           {/* "Our Process" Section */}
