@@ -53,6 +53,13 @@ const GetAQuoteForm = () => {
           {/* Form Section */}
           <div className="bg-card p-8 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold text-center text-primary mb-6">Project Details</h2>
+            
+            {state.succeeded && (
+              <div className="text-center mb-4 p-3 rounded-md bg-green-100 text-green-800">
+                <p>Thank you for your request! We will get back to you shortly.</p>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input type="text" name="user_name" placeholder="Your Name" required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
@@ -120,7 +127,7 @@ const GetAQuoteForm = () => {
               </div>
             </div>
             <p className="mt-6 text-sm text-muted-foreground italic">
-              For reCAPTCHA, please enable it in your EmailJS dashboard under your site settings. This form is ready for it.
+              
             </p>
           </div>
         </div>
