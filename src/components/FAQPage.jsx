@@ -44,17 +44,19 @@ const faqs = [
 ];
 
 const FAQPage = () => (
-  <div className="max-w-2xl mx-auto py-16 px-4">
-    <h1 className="text-3xl font-bold mb-8 text-center text-card-foreground">Frequently Asked Questions</h1>
-    <div className="space-y-6">
-      {faqs.map((faq, idx) => (
-        <div key={idx} className="bg-card rounded-lg shadow p-6">
-          <h2 className="font-semibold text-lg mb-2 text-card-foreground">{faq.question}</h2>
-          <p className="text-muted-foreground">{faq.answer}</p>
+    <div className="bg-white pt-20 min-h-screen">
+        <div className="max-w-2xl mx-auto py-16 px-4">
+            <h1 className="text-3xl font-bold mb-8 text-center text-card-foreground">Frequently Asked Questions</h1>
+            <div className="space-y-6">
+            {faqs.map((faq, idx) => (
+                <div key={idx} className="bg-card rounded-lg shadow p-6">
+                <h2 className="font-semibold text-lg mb-2 text-card-foreground">{faq.question}</h2>
+                <p className="text-muted-foreground">{faq.answer}</p>
+                </div>
+            ))}
+            </div>
         </div>
-      ))}
     </div>
-  </div>
 );
 
-export default FAQPage; 
+export default FAQPage;

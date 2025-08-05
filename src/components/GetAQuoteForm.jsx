@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { populateDistricts, validateForm, onSubmit } from '@/form-functions';
+import React, { useState, useRef } from 'react';
 
 const regions = [
   { name: 'West Coast', districts: ['Brikama', 'Kombo North', 'Kombo South'] },
@@ -11,184 +10,154 @@ const regions = [
 ];
 
 const tankSizes = [
-  '500 liters',
-  '1000 liters',
-  '2000 liters',
-  '3000 liters',
-  '4000 liters',
-  '5000 liters',
-  '10000 liters',
+  '500 liters', '1000 liters', '2000 liters', '3000 liters', '4000 liters', '5000 liters', '10000 liters',
 ];
 
 const GetAQuoteForm = () => {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    power: '',
-    tankSize: '',
-    region: '',
-    district: '',
-    callTime: '',
-  });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setForm({
-      ...form,
-      [name]: type === 'checkbox' ? checked : value,
-    });
-  };
-
-  useEffect(() => {
-    // Load reCAPTCHA script
-    const script = document.createElement('script');
-    script.src = "https://www.google.com/recaptcha/api.js?render=6LeIxAcTAAAAAJcZVRqyHh71riL_dGzKjdR8-PUh";
-    script.async = true;
-    script.onload = () => {
-      console.log("reCAPTCHA script loaded");
-    };
-    document.head.appendChild(script);
-  }, []);
+  const form = useRef();
+  const [region, setRegion] = useState('');
+  const [powerPackage, setPowerPackage] = useState('');
+  const [formStatus, setFormStatus] = useState({ message: '', type: '' });
 
   const handleRegionChange = (e) => {
-    setForm({ ...form, region: e.target.value, district: '' });
-    populateDistricts("region", "district");
+    setRegion(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    onSubmit(e, "quoteForm");
+  const handlePowerChange = (e) => {
+    setPowerPackage(e.target.value);
   };
 
-  const selectedRegion = regions.find(r => r.name === form.region);
+  const sendEmail = async (e) => {
+    e.preventDefault();
+    setFormStatus({ message: 'Sending...', type: 'info' });
+
+    const formData = new FormData(form.current);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'onboarding@resend.dev',
+          to: 'jallowabdoukarim11@gmail.com',
+          subject: 'New Quote Request',
+          html: `<p>Name: ${data.user_name}</p>
+                 <p>Email: ${data.user_email}</p>
+                 <p>Phone: ${data.user_phone}</p>
+                 <p>Package: ${data.power_package}</p>
+                 <p>Tank Size: ${data.tank_size}</p>
+                 <p>Region: ${data.region}</p>
+                 <p>District: ${data.district}</p>`,
+        }),
+      });
+
+      if (response.ok) {
+        setFormStatus({ message: 'Thank you for your request! We will get back to you shortly.', type: 'success' });
+        form.current.reset();
+        setRegion('');
+        setPowerPackage('');
+      } else {
+        const errorData = await response.json();
+        setFormStatus({ message: `Failed to send request. Please try again. Error: ${errorData.error.message}`, type: 'error' });
+      }
+    } catch (error) {
+      setFormStatus({ message: `Failed to send request. Please try again. Error: ${error.message}`, type: 'error' });
+    }
+  };
+
+  const selectedRegionData = regions.find(r => r.name === region);
 
   return (
-    <main className="form-container">
-      <form id="quoteForm" action="/submit-quote" method="POST" className="space-y-4 max-w-md mx-auto pt-20" onSubmit={handleSubmit}>
-        <h2 className="text-xl font-bold text-card-foreground">Get a Quote</h2>
-        {error && <div className="text-destructive">{error}</div>}
-        {success && <div className="text-accent">Thank you for your request!</div>}
-
-        <div>
-          <label htmlFor="name" className="block font-medium text-card-foreground">Name<span className="text-red-500">*</span></label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Your Name"
-            value={form.name}
-            onChange={handleChange}
-            required
-            className="w-full border border-border bg-background text-foreground p-2 rounded"
-          />
-        </div>
-        <div>
-          <label htmlFor="email" className="block font-medium text-card-foreground">Email<span className="text-red-500">*</span></label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Your Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-            className="w-full border border-border bg-background text-foreground p-2 rounded"
-          />
-        </div>
-        <div>
-          <label htmlFor="phone" className="block font-medium text-card-foreground">Phone</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="Phone"
-            value={form.phone}
-            onChange={handleChange}
-            className="w-full border border-border bg-background text-foreground p-2 rounded"
-          />
+    <main className="bg-white pt-20 min-h-screen">
+      <div className="max-w-4xl mx-auto py-16 px-4">
+        
+        {/* Content Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">Get a Custom Quote</h1>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Every water solution is unique. Fill out the form below to receive a detailed, no-obligation quote tailored to your specific needs. Our team will provide a transparent breakdown of costs and a clear plan for your project.
+          </p>
         </div>
 
-        <div>
-          <label htmlFor="power" className="block font-medium text-card-foreground">Select Package:<span className="text-red-500">*</span></label>
-          <select
-            id="power"
-            name="power"
-            value={form.power}
-            onChange={handleChange}
-            required
-            className="w-full border border-border bg-background text-foreground p-2 rounded"
-          >
-            <option value="">Select a package</option>
-            <option value="Electricity">Electricity</option>
-            <option value="Solar">Solar</option>
-            <option value="Drilling Only">Drilling Only</option>
-          </select>
-        </div>
+        <div className="grid md:grid-cols-2 gap-10 items-start">
+          {/* Form Section */}
+          <div className="bg-card p-8 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold text-center text-primary mb-6">Project Details</h2>
+            {formStatus.message && (
+              <div className={`text-center mb-4 p-3 rounded-md ${formStatus.type === 'success' ? 'bg-green-100 text-green-800' : formStatus.type === 'error' ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'}`}>
+                {formStatus.message}
+              </div>
+            )}
+            <form ref={form} onSubmit={sendEmail} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input type="text" name="user_name" placeholder="Your Name" required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
+                <input type="email" name="user_email" placeholder="Your Email" required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
+              </div>
+              <input type="tel" name="user_phone" placeholder="Your Phone Number" className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
+              
+              <select name="power_package" value={powerPackage} onChange={handlePowerChange} required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary">
+                <option value="">Select a Package*</option>
+                <option value="Electricity">Electricity Package</option>
+                <option value="Solar">Solar Package</option>
+                <option value="Drilling Only">Drilling Only</option>
+              </select>
 
-        {(form.power === 'Electricity' || form.power === 'Solar') && (
-          <div>
-            <label htmlFor="tankSize" className="block font-medium text-card-foreground">Tank Size (liters)<span className="text-red-500">*</span></label>
-            <select
-              id="tankSize"
-              name="tankSize"
-              value={form.tankSize}
-              onChange={handleChange}
-              required
-              className="w-full border border-border bg-background text-foreground p-2 rounded"
-            >
-              <option value="">Select tank size</option>
-              {tankSizes.map((size) => (
-                <option key={size} value={size}>
-                  {size}
-                </option>
-              ))}
-            </select>
+              {(powerPackage === 'Electricity' || powerPackage === 'Solar') && (
+                <select name="tank_size" required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary">
+                  <option value="">Select Tank Size*</option>
+                  {tankSizes.map(size => <option key={size} value={size}>{size}</option>)}
+                </select>
+              )}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <select name="region" value={region} onChange={handleRegionChange} required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary">
+                  <option value="">Select Region*</option>
+                  {regions.map(r => <option key={r.name} value={r.name}>{r.name}</option>)}
+                </select>
+                <select name="district" required disabled={!region} className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary disabled:bg-gray-100">
+                  <option value="">Select District*</option>
+                  {selectedRegionData && selectedRegionData.districts.map(d => <option key={d} value={d}>{d}</option>)}
+                </select>
+              </div>
+              <button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-md font-semibold text-lg cta-button">Request Free Quote</button>
+            </form>
           </div>
-        )}
 
-        <div>
-          <label htmlFor="region" className="block font-medium text-card-foreground">Region<span className="text-red-500">*</span></label>
-          <select
-            id="region"
-            name="region"
-            value={form.region}
-            onChange={handleRegionChange}
-            required
-            className="w-full border border-border bg-background text-foreground p-2 rounded"
-          >
-            <option value="">Select region</option>
-            {regions.map((r) => (
-              <option key={r.name} value={r.name}>
-                {r.name}
-              </option>
-            ))}
-          </select>
+          {/* "Our Process" Section */}
+          <div className="bg-gray-50 p-8 rounded-lg">
+            <h3 className="text-2xl font-bold text-primary mb-4">Our Simple 3-Step Process</h3>
+            <div className="space-y-4">
+              <div className="flex items-start">
+                <div className="flex-shrink-0 h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">1</div>
+                <div className="ml-4">
+                  <h4 className="font-semibold text-lg">Submit Your Request</h4>
+                  <p className="text-muted-foreground">Fill out the form with your project details. The more information you provide, the more accurate your quote will be.</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <div className="flex-shrink-0 h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">2</div>
+                <div className="ml-4">
+                  <h4 className="font-semibold text-lg">Free Consultation</h4>
+                  <p className="text-muted-foreground">Our experts will review your request and contact you to discuss your needs, answer questions, and schedule a site assessment if necessary.</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <div className="flex-shrink-0 h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">3</div>
+                <div className="ml-4">
+                  <h4 className="font-semibold text-lg">Receive Your Quote</h4>
+                  <p className="text-muted-foreground">We'll provide a detailed, transparent quote with a full breakdown of costs and timelines. No hidden fees, no obligations.</p>
+                </div>
+              </div>
+            </div>
+            <p className="mt-6 text-sm text-muted-foreground italic">
+              For reCAPTCHA, please enable it in your EmailJS dashboard under your site settings. This form is ready for it.
+            </p>
+          </div>
         </div>
-        <div>
-          <label htmlFor="district" className="block font-medium text-card-foreground">District<span className="text-red-500">*</span></label>
-          <select
-            id="district"
-            name="district"
-            value={form.district}
-            onChange={handleChange}
-            required
-            className="w-full border border-border bg-background text-foreground p-2 rounded"
-            disabled={!form.region}
-          >
-            <option value="">Select district</option>
-            {selectedRegion &&
-              selectedRegion.districts.map((d) => (
-                <option key={d} value={d}>
-                  {d}
-                </option>
-              ))}
-          </select>
-        </div>
-       <div id="recaptcha-container"></div>
-        <button type="submit" className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded cta-button">Request Quote</button>
-      </form>
+      </div>
     </main>
   );
 };

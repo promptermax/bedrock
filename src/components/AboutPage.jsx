@@ -6,17 +6,15 @@ function AboutPage() {
   return (
     <div className="pt-20 bg-white min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-800 to-green-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="bg-gradient-to-br from-green-800 to-green-600 text-white py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">About Bedrock Gambia</h1>
-          <p className="text-xl opacity-90 max-w-2xl mx-auto mb-8">
-            Building the foundation for sustainable water access and community growth across The Gambia
+          <p className="text-xl opacity-90 mb-6">
+            Building the foundation for sustainable water access and community growth across The Gambia.
           </p>
-          <div className="max-w-lg mx-auto">
-            <div className="bg-gray-200 rounded-lg h-72 flex items-center justify-center text-gray-500 italic">
-              [Hero Image: Team at work site or company overview photo]
-            </div>
-          </div>
+          <p className="text-lg opacity-80">
+            We are a team of dedicated professionals committed to solving the nation's water challenges with integrity, innovation, and a deep-rooted focus on the communities we serve. Our story is one of purpose, driven by the belief that reliable water is the bedrock of a thriving future.
+          </p>
         </div>
       </section>
 
