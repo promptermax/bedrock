@@ -55,12 +55,18 @@ function Header() {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${hasScrolled ? 'bg-card shadow-sm' : 'bg-transparent'}`} style={{ height: '116px' }}>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${hasScrolled ? 'bg-card shadow-sm py-2' : 'bg-transparent py-4'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+          <div className="flex justify-between items-center">
             <div className="flex items-center">
               <Link to="/" onClick={() => setIsMenuOpen(false)}>
-                <img src="/logo/Bedrock-Color-without-tagline.svg" alt="Bedrock Gambia" className="h-[100px] w-auto" />
+                <img 
+                  src="/logo/Bedrock-Color-without-tagline.svg" 
+                  alt="Bedrock Gambia" 
+                  className={`w-auto transition-all duration-300 ${
+                    hasScrolled ? 'h-[60px]' : 'h-[80px] md:h-[100px]'
+                  }`} 
+                />
               </Link>
             </div>
             
@@ -71,7 +77,11 @@ function Header() {
             
             <div className="hidden md:block">
               <Link to="/get-a-quote">
-                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground cta-button">Get Quote</Button>
+                <Button className={`bg-primary hover:bg-primary/90 text-primary-foreground cta-button transition-all duration-300 ${
+                  hasScrolled ? 'px-4 py-2 text-sm' : 'px-6 py-2'
+                }`}>
+                  Get Quote
+                </Button>
               </Link>
             </div>
 

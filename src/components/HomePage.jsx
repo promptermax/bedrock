@@ -7,9 +7,9 @@ import ContactForm from './ContactForm';
 
 function HomePage() {
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section */}
-      <section className="hero-section bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-primary-foreground py-20">
+      <section className="hero-section bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-primary-foreground pt-24 md:pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
