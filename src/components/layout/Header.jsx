@@ -29,7 +29,7 @@ function Header() {
   const renderNavLinks = (isMobile = false) => (
     navLinks.map((link) => {
       const className = isMobile 
-        ? "block text-2xl font-semibold text-card-foreground hover:text-primary transition-colors py-3" 
+        ? "block text-lg font-medium text-card-foreground hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-primary/10" 
         : "text-card-foreground hover:text-primary transition-colors";
       
       if (link.isHashLink) {
@@ -87,7 +87,7 @@ function Header() {
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <Button variant="ghost" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <Button variant="ghost" onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2">
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
             </div>
@@ -97,14 +97,29 @@ function Header() {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-card/95 backdrop-blur-sm md:hidden">
-          <div className="flex flex-col items-center justify-center h-full pt-20">
-            <nav className="flex flex-col items-center space-y-6 mb-8">
-              {renderNavLinks(true)}
-            </nav>
-            <Link to="/get-a-quote" onClick={() => setIsMenuOpen(false)}>
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground cta-button">Get Quote</Button>
-            </Link>
+        <div className="fixed inset-0 z-40 bg-card/98 backdrop-blur-md md:hidden">
+          <div className="flex flex-col h-full">
+            {/* Header space */}
+            <div className="h-24"></div>
+            
+            {/* Menu Content */}
+            <div className="flex-1 flex flex-col justify-center px-6">
+              <nav className="flex flex-col space-y-2 mb-12">
+                {renderNavLinks(true)}
+              </nav>
+              
+              {/* CTA Button */}
+              <div className="flex justify-center">
+                <Link to="/get-a-quote" onClick={() => setIsMenuOpen(false)} className="w-full max-w-xs">
+                  <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground cta-button">
+                    Get Quote
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            
+            {/* Bottom space */}
+            <div className="h-20"></div>
           </div>
         </div>
       )}
