@@ -52,6 +52,8 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --color-primary-hover: var(--primary-hover);
+  --color-accent-hover: var(--accent-hover);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -71,12 +73,14 @@
   --popover: oklch(0.95 0.05 98); /* Sage Green */
   --popover-foreground: oklch(0.24 0.09 50); /* Rich Brown */
   --primary: #538E26; /* Forest Green */
+  --primary-hover: #467a1f; /* Darker Forest Green */
   --primary-foreground: oklch(0.985 0 0); /* White for contrast */
   --secondary: oklch(0.74 0.16 67); /* Warm Orange */
   --secondary-foreground: oklch(0.24 0.09 50); /* Rich Brown */
   --muted: oklch(0.95 0.05 98); /* Sage Green */
   --muted-foreground: oklch(0.5 0.05 98); /* Darker Sage Green */
   --accent: #7BCC3E; /* Vibrant Green */
+  --accent-hover: #6ab436; /* Darker Vibrant Green */
   --accent-foreground: oklch(0.24 0.09 50); /* Rich Brown */
   --destructive: oklch(0.577 0.245 27.325); /* Keeping original for now, no direct replacement in brand guide */
   --border: oklch(0.3 0.05 50); /* Desaturated Rich Brown */
