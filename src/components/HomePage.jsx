@@ -23,13 +23,13 @@ function HomePage() {
                 Your trusted partner for borehole drilling and water system maintenance in The Gambia. We provide reliable access to clean, safe water for homes, farms, and businesses.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/get-a-quote">
-                  <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
+                <Link to="/get-a-quote" className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90">
                     Get Started Today
                   </Button>
                 </Link>
-                <Link to="/about">
-                  <Button size="lg" variant="outline" className="border-primary-foreground text-black hover:bg-primary-foreground hover:text-primary bg-white">
+                <Link to="/about" className="w-full sm:w-auto">
+                  <Button size="lg" variant="outline" className="w-full border-primary-foreground text-black hover:bg-primary-foreground hover:text-primary bg-white">
                     Learn More
                   </Button>
                 </Link>
@@ -58,7 +58,7 @@ function HomePage() {
       <section id="services" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-block bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <div className="inline-block bg-accent/20 text-black px-4 py-2 rounded-full text-sm font-medium mb-4">
               🔧 What We Do
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
