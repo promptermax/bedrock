@@ -41,12 +41,13 @@ const ContactForm = () => {
             />
           </div>
           <div>
-            <label htmlFor="contact-phone" className="block text-sm font-medium text-card-foreground mb-1">Phone (optional)</label>
+            <label htmlFor="contact-phone" className="block text-sm font-medium text-card-foreground mb-1">Phone</label>
             <input
               id="contact-phone"
               type="tel"
               name="user_phone"
-              placeholder="Phone (optional)"
+              placeholder="Phone"
+              required
               className="w-full border border-border bg-background text-foreground p-2 rounded"
             />
           </div>

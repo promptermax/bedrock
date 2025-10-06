@@ -61,7 +61,7 @@ const GetAQuoteForm = () => {
                     errors={state.errors}
                   />
                 </div>
-                <input type="tel" name="user_phone" placeholder="Your Phone Number" className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
+                <input type="tel" name="user_phone" placeholder="Your Phone Number" required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary" />
                 
                 <select name="power_package" value={powerPackage} onChange={handlePowerChange} required className="w-full border border-border bg-background text-foreground p-3 rounded-md focus:ring-2 focus:ring-primary">
                   <option value="">Select a Package*</option>
